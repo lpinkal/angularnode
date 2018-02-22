@@ -1,0 +1,59 @@
+<html>
+<body>
+string 1:<input type="text" id="p1"><br>
+string 2:<input type="text" id="p2"><br>
+<button id="btn">substract</button><br>
+ans:<p id="ans"></p>
+<script>
+    let btn=document.getElementById("btn");
+    btn.addEventListener('click',()=>{
+        let s1=sum(document.getElementById("p1").value);
+        let s2=sum(document.getElementById("p2").value);
+        console.log(s1);
+        console.log(s2);
+
+        let sub=substract(s1,s2);
+
+    });
+
+    function sum(str) {
+        let str1=str.split('');
+        let t=0;
+        for(let i=0;i<str1.length;i++){
+            let a=str1[i].charCodeAt()-97;
+            t+=Math.pow(2,a);
+            //console.log(a);
+        }
+        return t;
+    }
+
+    function substract(s1,s2) {
+        let s=s1-s2;
+        let f=0;
+        if(s%2!=0){
+            s--;
+            f=1;
+        }
+        let b=[];
+        while(s>0) {
+            for (let i = 0; i < 25; i++) {
+                if (s < Math.pow(2, i)) {
+                     s = s - Math.pow(2, i - 1);
+                    b.push(String.fromCharCode(i+96));
+                    break;
+                }
+            }
+        }
+        if(f==1){
+            b.push(String.fromCharCode(97));
+        }
+        b.reverse();
+        console.log(b.join(''));
+        document.getElementById("ans").innerHTML=b.join('');
+    }
+
+
+
+</script>
+</body>
+</html>

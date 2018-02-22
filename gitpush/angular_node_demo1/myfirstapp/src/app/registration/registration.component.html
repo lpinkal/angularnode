@@ -1,0 +1,34 @@
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <div ngModelGroup="userdata">
+  <label>Name</label>
+  <input
+  type="text"
+  id="username"
+  ngModel
+  name="username"
+  required><br>
+  <label>Email</label>
+  <input
+  type="text"
+  id="email"
+  [(ngModel)]="defaultemail"
+  name="email"
+  required
+  email
+  #email><br>
+  </div>
+  reply:{{defaultemail}}
+  <span *ngIf="!email.value && email.touched">enter valid email</span><br>
+  <div class="radio" *ngFor="let gender of genders">
+    <label>
+      <input type="radio"
+             name="gender"
+             ngModel
+             [value]="gender"
+             required
+      >{{gender}}
+    </label>
+  </div>
+  <p>username:{{username}}</p>
+  <button type="submit" [disabled]="!f.valid">submit</button>
+</form>

@@ -1,0 +1,11 @@
+<h3>Login</h3>
+<form (ngSubmit)="onlogin(f)" #f="ngForm">
+  <label>Email:</label>
+  <input type="text" name="username" ngModel required email><br>
+  <label>Password:</label>
+  <input type="text" name="password" ngModel required><br>
+  <button type="submit" [disabled]="!f.valid">Submit</button>
+  <button type="button" (click)="googlelogin1(f)">google</button>
+</form>
+
+<div role="presentation" routerLinkActive="active" ><a routerLink="/registration">Registration</a></div>

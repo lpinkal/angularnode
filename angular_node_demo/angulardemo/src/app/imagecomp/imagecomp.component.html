@@ -1,0 +1,18 @@
+
+
+<!--<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />-->
+<!--&lt;!&ndash; button to trigger the file upload when submitted &ndash;&gt;-->
+<!--<button type="button" class="btn btn-success" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">-->
+  <!--Upload-->
+<!--</button>-->
+
+<input id="photo" type="file" (change)="changeListner($event)"image-upload multiple/>
+<!-- button to trigger the file upload when submitted -->
+<button type="button" class="btn btn-success btn-s" (click)="upload()" >
+  Upload with method 2
+</button><br>
+<div id="imag">
+
+</div>
+<!--<img class="image" height="200" width="300"/>-->
+

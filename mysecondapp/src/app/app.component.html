@@ -1,0 +1,5 @@
+<app-cockpit (servercreated)="Serveradded($event)" (bpcreated)="Blueprintadded($event)"></app-cockpit><br>
+
+<button (click)="onnamechange()">change name</button>
+<button (click)="ondelete()">delete</button>
+<app-server-element *ngFor="let server of list" [srvele]="server" [name]="server.name">aaaaaaa<p #paragraph>hello</p></app-server-element>

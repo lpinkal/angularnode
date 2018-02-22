@@ -1,0 +1,23 @@
+<h3>Registration form</h3>
+<form (ngSubmit)="onsave(f)" #f="ngForm">
+  <p *ngIf=error>not valid</p>
+  <label>Name:</label>
+  <input type="text" name="name" ngModel required><br>
+  <label>email:</label>
+  <input type="text" name="email" ngModel required email><br>
+  <label>password:</label>
+  <input type="text" name="password" ngModel required><br>
+  <div class="radio" *ngFor="let gender of genders">
+    <label>
+      <input type="radio"
+             name="gender"
+             ngModel
+             [value]="gender"
+             required
+      >{{gender}}
+    </label>
+  </div>
+  <button type="submit" [disabled]="!f.valid">submit</button>
+</form>
+
+<div role="presentation" routerLinkActive="active" ><a routerLink="/login">Login</a></div>

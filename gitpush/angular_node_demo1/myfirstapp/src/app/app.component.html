@@ -1,0 +1,51 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div class="rows">
+    <div class="col-xs-12">
+      <h3>enter name</h3><input type="text" [(ngModel)]="name">
+      <hr>
+      <ul class="nav nav-tabs">
+      <li role="presentation" routerLinkActive="active"><a routerLink="users">users</a></li>
+        <li role="presentation" routerLinkActive="active" ><a routerLink="servers">servers</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="about">about</a></li>
+        <li role="presentation" routerLinkActive="active"><a [routerLink]="['server']">server</a></li>
+        <li role="presentation" routerLinkActive="active"><a [routerLink]="['registration']">registration</a></li>
+        <li role="presentation" routerLinkActive="active"><a [routerLink]="['observable']">observable</a></li>
+      </ul>
+
+
+      <router-outlet></router-outlet>
+      <!--<div class="app-servers" ></div>-->
+      <div appBasicHighlight>style with basic directive</div>
+      <div [appBetterHighlight]="'red'" DefaultColor="yellow" >style with better directive</div>
+      <!--<div *ngIf="!onlyodd; else odddiv">-->
+      <!--<div *ngFor="let server of even; let i=index">{{i}}</div>-->
+      <!--</div>-->
+      <!--<ng-template [ngIf]="!onlyodd">-->
+        <!--<div *ngFor="let server of even; let i=index">{{even[i]}}</div>-->
+      <!--</ng-template>-->
+      <!--<ng-template #odddiv>-->
+        <!--<div *ngFor="let server of odd; let i=index">{{odd[i]}}</div>-->
+      <!--</ng-template>-->
+
+      <ng-template [appUnless]="onlyodd">
+        <div *ngFor="let server of even; let i=index">{{even[i]}}</div>
+      </ng-template>
+
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">value is 5</p>
+        <p *ngSwitchCase="10">value is 10</p>
+        <p *ngSwitchCase="15">value is 15</p>
+        <p *ngSwitchDefault>value is default</p>
+        </div>
+
+      <div appFindlanet>lanette am software solution</div>
+      <div appFindlanet>{{ans}}</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

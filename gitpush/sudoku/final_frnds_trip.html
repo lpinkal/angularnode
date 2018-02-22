@@ -1,0 +1,170 @@
+<html>
+
+<head>
+    <title>
+        trip expense calculation
+    </title>
+</head>
+event name:<input type="text" id="name" ><br>
+
+<input type="submit" id="sub2" value="Expense given by">
+<div id="box2"></div>
+<div id="box"></div>
+<input type="submit" id="sub" value="select involved person">
+<div id="box1"></div>
+<input type="submit" id="sub1" value="submit">
+<div id="box3"></div>
+
+
+<script>
+    let iper=[];
+    let m=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]];
+    let n=0;
+    function  fun(x,y) {
+        html=document.getElementById("box").innerHTML;
+        html+=`<input type="text" class="egb" id="${y}">${x}<br>`;
+        document.getElementById("box").innerHTML=html;
+    }
+    function fun1(x) {
+        iper.push(x);
+    }
+    function  fun(x) {
+        html=document.getElementById("box").innerHTML;
+        html+=`<input type="number" class="egb" id="${x}">${x}<br>`;
+        document.getElementById("box").innerHTML=html;
+    }
+
+    var sub2=document.getElementById('sub2');
+    sub2.addEventListener('click',()=>{
+
+        let html='';
+        for(let i=1;i<=5;i++){
+            html+=`<input type="checkbox" value="a" class="p" id="ia" onchange="fun(${i})">${i}<br>`;
+        }
+        document.getElementById("box2").innerHTML=html;
+    });
+
+    var sub=document.getElementById('sub');
+    sub.addEventListener('click',()=>{
+
+        let html='';
+        for(let i=1;i<=5;i++){
+            html+=`<input type="checkbox" id="${i}" onchange="fun1(${i})">${i}<br>`;
+        }
+        document.getElementById("box1").innerHTML=html;
+    });
+
+
+    var sub1=document.getElementById('sub1');
+    let expense=[0,0,0,0,0];
+
+    sub1.addEventListener('click',()=>{
+        let total1=[0,0,0,0,0];
+        let fin=[0,0,0,0,0];
+        //console.log(iper);
+        m[n][0]=document.getElementById("name").value;
+        let egb= document.querySelectorAll(".egb");
+        let total=0;
+        for(let i=0;i<egb.length;i++){
+            let b=egb[i].id;
+            let r=parseInt(egb[i].value);
+            total=total+r;
+            //expense.push([b,egb[i].value]);
+            for(let j=0;j<5;j++){
+                if(b-1==j){
+                    expense[j]+=r;
+                }
+            }
+
+        }
+        console.log(expense);
+       // console.log(iper);
+        for(let i=0;i<iper.length;i++){
+            for(let j=1;j<=5;j++){
+                if(iper[i]==j){
+                    m[n][j]=total/iper.length;
+                }
+            }
+        }
+       // console.log(total);
+
+        document.getElementById("box1").innerHTML='';
+        document.getElementById("box2").innerHTML='';
+        document.getElementById("box").innerHTML='';
+        iper.splice(0,5);
+        console.log(m);
+
+
+
+        for(let i=1;i<=5;i++){
+            for(let j=0;j<=n;j++){
+               total1[i-1]+=m[j][i];
+            }
+        }
+        console.log(total1);
+
+        for(let i=0;i<5;i++){
+            fin[i]=expense[i]-total1[i];
+        }
+
+        console.log(fin);
+        let abc='';
+        for(let i=0;i<5;i++){
+
+            if(fin[i]==0){
+
+            }
+//            else if(fin[i]>0){
+//                for(let j=0;j<5 ;j++){
+//                    if(i!=j) {
+//                        if (fin[j] < 0 ) {
+//                            fin[i] = fin[i] + fin[j];
+//                            abc+=`persion ${j+1} give rs ${-fin[j]} to persion ${i+1}<br>`
+//                            console.log(`persion ${j+1} give rs ${-fin[j]} to persion ${i+1}`);
+//                            fin[j] = 0;
+//                            console.log(fin);
+//                        }
+//                        console.log(fin[i] + ' ' + fin[j]);
+//                    }
+//                }
+//            }
+            else if(fin[i]>0){
+                for(let j=0;j<5 ;j++){
+                    if(i!=j) {
+                        if(fin[j]<0){
+                            if(fin[i]>=(-fin[j])){
+                                fin[i]=fin[i]-(-fin[j]);
+                                abc+=`persion ${j+1} give rs ${-fin[j]} to persion ${i+1}<br>`
+                                console.log(`1:persion ${j+1} give rs ${-fin[j]} to persion ${i+1}`);
+                                fin[j]=0;
+                                console.log(fin);
+                            }
+                            else if(fin[i]<(-fin[j])){
+                                fin[j]=fin[j]+fin[i];
+                                abc+=`persion ${j+1} give rs ${fin[i]} to persion ${i+1}<br>`
+                                console.log(`2:persion ${j+1} give rs ${fin[i]} to persion ${i+1}`);
+                                fin[i]=0;
+
+                                console.log(fin);
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        document.getElementById("box3").innerHTML=abc;
+
+
+        n++;
+    });
+
+</script>
+
+<body>
+
+</body>
+
+</html>

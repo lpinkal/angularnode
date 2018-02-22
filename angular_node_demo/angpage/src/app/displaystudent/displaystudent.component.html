@@ -1,0 +1,7 @@
+
+<form #f="ngForm">
+<div class="form-group" *ngFor="let skill of user.skills; let i=index">
+  <input type="checkbox" ngModel name={{user.skills[i].name}} >{{user.skills[i].name}}
+</div>
+  <input type="button" (click)="submit(f)" >
+</form>

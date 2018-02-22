@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+<h4 class="display-2">Registration form</h4>
+<form (ngSubmit)="onsave(f)" #f="ngForm">
+  <p *ngIf=error>not valid</p>
+  <label>Name:</label>
+  <input type="text" name="name" ngModel required><br>
+  <label>email:</label>
+  <input type="text" name="email" ngModel required email><br>
+  <label>password:</label>
+  <input type="text" name="password" ngModel required><br>
+  <div class="radio" *ngFor="let gender of genders">
+    <label>
+      <input type="radio"
+             name="gender"
+             ngModel
+             [value]="gender"
+             required
+      >{{gender}}
+    </label>
+  </div>
+  <input type="file" name="file" #fileInput ngModel>
+  <button type="submit" [disabled]="!f.valid" class="btn-outline-primary">submit</button>
+</form>
+      <div class="col-2">
+        <a><img class="rounded-circle img-fluid" [src]="myimagepath" height="200" width="200" ></a>
+      </div>
+
+      <div class="alert alert-secondary alert-dismissable fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Secondary!</strong> Indicates a slightly less important action.
+      </div>
+<div role="presentation" routerLinkActive="active" ><a routerLink="/login">Login</a></div>
+  </div>
+  </div>
+</div>

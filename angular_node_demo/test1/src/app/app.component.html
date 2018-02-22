@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <form (ngSubmit)="submitdata(f)" #f="ngForm">
+          <div class="form-group">
+            <label>Id</label>
+            <input class="form-control" type="text" name="id" ngModel>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" type="text" name="name" ngModel>
+          </div>
+          <div class="form-group">
+            <label>state</label>
+            <select name="state" ngModel required (click)="sel(f.value.state)">
+              <option value="Gujrat">Gujrat</option>
+              <option value="Maharastra">Maharastra</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Delhi">Delhi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>city</label>
+            <select name="city" id="city" ngModel required>
+
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" value="submit" [disabled]="!f.valid">submit</button>
+        </form>
+      </div>
+      <div class="col-3">
+      </div>
+  </div>
+  <br><br>
+  <!--<li class="btn btn-info"><a routerLink="displaylist" >Display list</a></li>-->
+  <!--<router-outlet></router-outlet>-->
+  <div id="table" class="table-responsive"></div>
+  <div id="pagebtn"></div>
+</div>

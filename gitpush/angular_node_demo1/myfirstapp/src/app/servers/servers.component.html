@@ -1,0 +1,17 @@
+<button class="btn btn-primary" [disabled]="!allowuser" (click)="servernameupdate()">add server</button>
+<!--<input type="text" class="form-control" (input)="servernameupdate($event)">-->
+<input type="text" class="form-control"  [(ngModel)]="servername">
+<app-server *ngFor="let server of servers; let i=index"></app-server>
+<div *ngFor="let server of servers; let i=index"><a [routerLink]="['/servers',server]" [queryParams]="{allowuser:1}" fragment="loading">name:{{server}}</a></div>
+<router-outlet></router-outlet>
+<!--<p [innerText]="allowuser"></p>-->
+
+<p *ngIf="iscreated; else noserver"><a [routerLink]="['/',3,'edit']" [queryParams]="{allowuser:1}" fragment="loading">server is created, name is {{servername}}</a></p>
+<ng-template #noserver>
+  <p>
+    server not created
+  </p>
+</ng-template>
+<!--<p>{{createserver}}</p>-->
+<!--<p>{{servername}}</p>-->
+<p></p>
