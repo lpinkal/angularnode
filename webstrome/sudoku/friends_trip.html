@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <title>
+        trip expense calculation
+    </title>
+</head>
+event name:<input type="text" id="name" ><br>
+    involved person:
+<input type="checkbox" value="a" class="p" id="ia" onchange="fun1('1')">A
+<input type="checkbox" value="b" class="p" id="ib" onchange="fun1('2')">B
+<input type="checkbox" value="c" class="p" id="ic" onchange="fun1('3')">C
+<input type="checkbox" value="d" class="p" id="id" onchange="fun1('4')">D
+<input type="checkbox" value="e" class="p" id="ie" onchange="fun1('5')">E
+
+<br>
+Expense given by:
+<input type="checkbox" value="a" id="e1" class="ex" onchange="fun('a')">A
+<input type="checkbox" value="b" id="e2" class="ex" onchange="fun('b')">B
+<input type="checkbox" value="c" id="e3" class="ex" onchange="fun('c')">C
+<input type="checkbox" value="d" id="e4" class="ex" onchange="fun('d')">D
+<input type="checkbox" value="e" id="e5" class="ex" onchange="fun('e')">E
+
+<div id="box"></div>
+<input type="submit" id="sub" value="submit">
+
+
+<script>
+//    let eventlist={
+//        event:{}
+//    };
+//    let iper=[];
+//    function  fun(x) {
+//        html=document.getElementById("box").innerHTML;
+//        html+=`<input type="text" class="egb" id="ex${x}">${x}<br>`;
+//        document.getElementById("box").innerHTML=html;
+//    }
+//
+//    function fun1(x) {
+//        iper.push(x);
+//    }
+//
+//    var sub=document.getElementById('sub');
+//    sub.addEventListener('click',()=>{
+//            let event=document.getElementById("name").value;
+//            let event1={
+//                name:event,
+//                p:[],
+//                ex:{}
+//            };
+//            eventlist.event=event1;
+//            eventlist.event.p=iper;
+//
+//
+//
+//            console.log(eventlist);
+//
+//    });
+let iper=[];
+
+let m=[[],[],[],[],[],];
+let n=0;
+function  fun(x) {
+        html=document.getElementById("box").innerHTML;
+        html+=`<input type="text" class="egb" id="${x}">${x}<br>`;
+        document.getElementById("box").innerHTML=html;
+   }
+
+function fun1(x) {
+        iper.push(x);
+    }
+
+var sub=document.getElementById('sub');
+sub.addEventListener('click',()=>{
+    let expense=[];
+    m[n][0]=document.getElementById("name").value;
+   // console.log(iper);
+
+   let egb= document.querySelectorAll(".egb");
+   let total=0;
+    for(let i=0;i<egb.length;i++){
+        let b=egb[i].id;
+        total+=egb[i].value;
+        expense.push([b,egb[i].value]);
+
+    }
+    console.log(expense);
+    console.log(iper);
+    for(let i=0;i<iper.length;i++){
+        for(let j=1;j<=5;j++){
+            if(iper[i]==j){
+                m[n][j]=total/iper.length;
+            }
+        }
+    }
+    console.log(total);
+    console.log(m);
+    iper.splice(0,5);
+    n++;
+});
+
+
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>

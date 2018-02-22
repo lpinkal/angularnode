@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>practise</title>
+</head>
+<body>
+<div id="wrapper">Page 1</div> <img id="mydata" onmouseover="cImg(this)" onmouseout="bImg(this)">
+<script>
+    var imgHolder = "http://via.placeholder.com/350x150/ffff00/fff?text=Image10";
+    window.onload=function () {
+        document.getElementById("mydata").src=imgHolder;
+    }
+    function cImg(t) {
+        imgHolder=t.src;
+        t.src="http://via.placeholder.com/350x150/ff0000/fff?text=Image2";
+    }
+    function bImg(t) {
+        t.src = imgHolder;
+    }
+</script>
+</body>
+</html>

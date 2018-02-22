@@ -1,0 +1,115 @@
+<html>
+<head>
+    <title>
+        sudoku
+    </title>
+    <style>
+        .ip{
+            width:50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+           <input type="button" value="solve" id="btn">
+
+<script>
+    let html='';
+    let m=[[],[],[],[],[],[],[],[],[]];
+    for(let i=0;i<9;i++){
+        for(let j=0;j<9;j++){
+            html+=`<input type="number" min="1" max="9" id="${i}${j}" class="ip" value="">`
+        }
+        html+=`<br>`;
+    }
+    document.getElementById("box").innerHTML=html;
+
+    let btn=document.getElementById('btn');
+
+    btn.addEventListener('click',()=>{
+        for(let i=0;i<9;i++){
+            for(let j=0;j<9;j++){
+                console.log(document.getElementById(`${i}${j}`).value);
+                var x=document.getElementById(`${i}${j}`).value;
+                console.log(x);
+                m[i][j]=x;
+            }
+        }
+        console.log(m);
+
+        let flag=1;
+        while(flag<=1000){
+
+            for(let i=0;i<9;i++){
+                for(let j=0;j<9;j++){
+
+                    if(m[i][j]==''){
+
+                        for(let k=1;k<=9;k++){
+                            let a=0;
+                            if(m[i][j]=='') {
+                                for (let l = 0; l < 9; l++) {
+                                    if (m[i][l] == k) {
+                                        a = 1;
+                                    }
+                                }
+                                for (let l = 0; l < 9; l++) {
+                                    if (m[l][j] == k) {
+                                        a = 1;
+                                    }
+                                }
+                                let l = fun(i);
+                                let n = fun(j);
+                                for (let p = l; p < l + 3; p++) {
+                                    for (let q = n; q < n + 3; q++) {
+                                        if (m[p][q] == k) {
+                                            a = 1;
+                                        }
+                                    }
+                                }
+
+                                if (a != 1) {
+                                    m[i][j] = k;
+                                    document.getElementById(`${i}${j}`).value = k;
+                                    console.log('fffffff' + k);
+                                }
+                                console.log(i + ' ' + j + ' ' + k + '' + a + "\n")
+                            }
+                            else {
+                                break;
+                            }
+
+                        }
+
+                    }else {
+                           // console.log(m[i][j]);
+                    }
+
+                }
+            }
+            console.log(m);
+            function fun(d) {
+                if(d==0 || d==1 || d==2){
+                    return 0;
+                }
+                else if(d==3 || d==4 || d==5){
+                    return 3;
+                }
+                else if(d==6 || d==7 || d==8){
+                    return 6;
+                }
+            }
+
+
+            flag+=1;
+
+        }
+
+
+
+
+    })
+</script>
+</body>
+</html>

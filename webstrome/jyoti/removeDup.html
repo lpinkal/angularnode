@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Dup</title>
+</head>
+<body>
+<div id="real"></div>
+<div id="rem"></div>
+ <input type="button" onclick="removeDup()" value="remove Dup">
+<script>
+    var data=[1,2,3,4,6,1,32,4,3];
+    var rem=[];
+    var obj={};
+    document.getElementById("real").innerHTML=data;
+    function removeDup () {
+        for(var i=0;i<data.length;i++){
+            obj[data[i]]="what";
+        }
+      for(var z in obj)
+      {
+          rem.push(z);
+      }
+        document.getElementById("rem").innerHTML=rem;
+    }
+
+</script>
+</body>
+</html>
