@@ -18,8 +18,7 @@ import { DisplaystudentComponent } from './displaystudent/displaystudent.compone
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import {AuthGuard} from "./auth-gaurd.service";
 import {AuthInterceptor} from "./auth.interceptor";
-import { FormTestingComponent } from './form-testing/form-testing.component';
-import { MyComponentComponent } from './my-component/my-component.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -31,16 +30,15 @@ import { MyComponentComponent } from './my-component/my-component.component';
     HomeComponent,
     StudentdetailsComponent,
     DisplaystudentComponent,
-    ErrorpageComponent,
-    FormTestingComponent,
-    MyComponentComponent
+    ErrorpageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

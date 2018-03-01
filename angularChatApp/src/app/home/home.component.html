@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3" style="background-color: transparent">
+      <div class="row">
+       <div class="col-8">
+          <img class="rounded-circle" [src]="profileimg" height="40" width="40" style="margin: 5px">
+        </div>
+        <div class="col-2">
+           <img [src]="chatimg" height="30" width="30" style="margin: 10px">
+        </div>
+         <div class="col-2">
+            <img [src]="moreimg" height="30" width="30" style="margin: 10px">
+         </div>
+      </div>
+      <hr>
+      <div class="row">
+        <input type="text" onkeypress="fun()" placeholder="search">
+      </div>
+      <hr>
+    <div class="row" *ngFor="let contact of contacts" (click)="curruntreceiver(contact)">
+        <img class="rounded-circle" [src]="contact.image" height="40" width="40" style="margin: 5px">
+        <p>{{contact.name}}<br>{{contact.status}}</p><hr>
+        {{contact.time}}
+    </div>
+    </div>
+    <div class="col-9">
+    <div class="row" *ngIf="curruntreceiverdetail">
+      <div class="col-1">
+        <img class="rounded-circle" [src]="curruntreceiverdetail.image" height="40" width="40" style="margin: 5px">
+      </div>
+      <div class="col-9">
+        <p >{{curruntreceiverdetail.name}}<br>{{curruntreceiverdetail.status}}</p>
+      </div>
+      <div class="col-1">
+        <img [src]="attachmentimg" height="30" width="30" style="margin: 10px">
+      </div>
+      <div class="col-1">
+        <img [src]="moreimg" height="30" width="30" style="margin: 10px">
+      </div>
+    </div>
+      <div class="row" *ngIf="curruntreceiverdetail">
+
+      </div>
+    </div>
+  </div>
+</div>

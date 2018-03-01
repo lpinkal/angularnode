@@ -28,11 +28,21 @@
       <br>
       <router-outlet></router-outlet>
     </div>
+  <button type="button" (click)="animate()">animate</button>
+  <button type="button" (click)="shrink()">shrink</button>
+  <div
+    style="height: 100px; width: 100px;"
+    [@divstate]="state">
+
+  </div><br>
+  <div
+    style="height: 100px; width: 100px;"
+    [@div2state]="wildcard">
+
+  </div>
 
 
   <!--<div class="fixed-bottom">-->
     <!--<p>header </p>-->
   <!--</div>-->
 </div>
-
-<app-form-testing></app-form-testing>

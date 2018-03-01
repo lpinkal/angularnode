@@ -11,12 +11,17 @@ var urlencodedParser = bodyParser.urlencoded({ extended: true });
 var cookieParser=require('cookie-parser');
 const jwt=require('jsonwebtoken');
 const bcrypt=require('bcrypt');
+var path = require('path');
 
 
 
 
 const app=express();
+
 app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({'extended':'false'}));
+app.use(express.static(path.join(__dirname, '../dist')));
+
 // app.use(cors());
 // app.use(cors({origin: [
 //     "http://localhost:4200"
@@ -40,14 +45,10 @@ app.get('/post',(req,res)=>{
   res.send('sucess')
 });
 
-app.get('/',(req,res)=>{
-  console.log(req.session);
-  res.send(req.session);
-});
 
-app.get('/logout',(req,res)=>{
+app.get('/logout',(req,res) => {
   req.session.destroy();
-  res.send(req.session);
+  res.send(req.session)
 });
 
 
@@ -56,12 +57,12 @@ app.use(passport.session());
 
 passport.serializeUser((user,cb)=>{
   console.log('ser');
-  cb(null,user);
+  cb(null,user)
 });
 
 passport.deserializeUser((user,cb)=>{
   console.log('deser');
-  cb(null,user);
+  cb(null,user)
 });
 
 
@@ -288,3 +289,5 @@ app.post('/upload',urlencodedParser,(req,res)=>{
 app.listen(environment.port,()=>{
   console.log('app started on port '+environment.port)
 });
+
+module.exports=app;

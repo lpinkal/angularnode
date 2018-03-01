@@ -18,9 +18,9 @@ export class RegistrationComponent  {
     console.log(f.value);
     this.auth.storedata(f.value).subscribe(
       (response: any) => {
-        let token=localStorage.getItem('token');
-        console.log(token);
-        if (token) {
+        let acesstoken=localStorage.getItem('acesstoken');
+        console.log(acesstoken);
+        if (acesstoken) {
           f.resetForm();
           this.router.navigate(['profile']);
         }
