@@ -1,6 +1,9 @@
+<div class="container-fluid">
+  <div class="back">
 <div class="container">
-  <div class="row">
-    <div class="col-3" style="background-color: transparent">
+  <div class="main">
+  <div class="row box">
+    <div class="col-3" >
       <div class="row">
        <div class="col-8">
           <img class="rounded-circle" [src]="profileimg" height="40" width="40" style="margin: 5px">
@@ -13,18 +16,22 @@
          </div>
       </div>
       <hr>
-      <div class="row">
-        <input type="text" onkeypress="fun()" placeholder="search">
+      <div class="row" style="margin-left: 0px ">
+        <input type="text" [(ngModel)]="searchtext" placeholder="search" style="margin-bottom:5px;width: 100%">
       </div>
-      <hr>
-    <div class="row" *ngFor="let contact of contacts" (click)="curruntreceiver(contact)">
+    <div class="contacts">
+      <div class="contact1">
+    <div class="row " *ngFor="let contact of contacts|filter:searchtext" (click)="curruntreceiver(contact)">
         <img class="rounded-circle" [src]="contact.image" height="40" width="40" style="margin: 5px">
         <p>{{contact.name}}<br>{{contact.status}}</p><hr>
         {{contact.time}}
     </div>
+      </div>
+    </div>
     </div>
     <div class="col-9">
-    <div class="row" *ngIf="curruntreceiverdetail">
+      <div *ngIf="curruntreceiverdetail">
+    <div class="row" >
       <div class="col-1">
         <img class="rounded-circle" [src]="curruntreceiverdetail.image" height="40" width="40" style="margin: 5px">
       </div>
@@ -38,9 +45,25 @@
         <img [src]="moreimg" height="30" width="30" style="margin: 10px">
       </div>
     </div>
-      <div class="row" *ngIf="curruntreceiverdetail">
-
+        <div class="row msg">
+            <div class="row rmsg" *ngFor="let msg of msgs" style="margin-left: 5px">
+               <p> {{msg}}</p>
+            </div>
+          <div class="row smsg" *ngFor="let msg of msgs1" style="margin-left: 60%;width: 99%;background: white">
+            <p> {{msg}}</p>
+          </div>
+        </div>
+        <div class="row inputtext">
+          <input type="text" [(ngModel)]="edittext" style="width: 92%">
+          <input type="button" class="btn-primary" value="send" style="width: 8%" (click)="addmsg(edittext)">
+        </div>
+      </div>
+      <div class="row connectedimg" *ngIf="!curruntreceiverdetail">
+        <img class="rounded-circle" [src]="connectedimg" height="300" width="300">
       </div>
     </div>
+  </div>
+  </div>
+</div>
   </div>
 </div>

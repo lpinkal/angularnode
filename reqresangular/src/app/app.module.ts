@@ -3,28 +3,24 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { QrComponent } from './qr/qr.component';
-import { ErrorpageComponent } from './errorpage/errorpage.component';
-import {AppRoutingModule} from "./app-routing.module";
-import { HomeComponent } from './home/home.component';
-import { FilterPipe } from './filter.pipe';
+import {ServerService} from "./server.service";
+import {HttpMethod} from "blocking-proxy/built/lib/webdriver_commands";
+import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    QrComponent,
-    ErrorpageComponent,
-    HomeComponent,
     FilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    HttpModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

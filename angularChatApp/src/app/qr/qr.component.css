@@ -4,7 +4,7 @@ body{
 .back{
   width:100%;
   margin:0 auto;
-  height: 350px;
+  height: 150px;
   background:#00bbff;
 }
 .main{
@@ -14,13 +14,13 @@ body{
   border-radius: 7px;
 }
 .image{
-  margin: 15px auto;
+  margin: 40px  auto;
   display: table;
   width:40%;
   float: left;
 }
 .text-box{
-  margin: 15px auto;
+  margin: 0px auto;
   display: table;
 }
 .text-box h1, .text-box h2, .text-box h6{
@@ -44,7 +44,12 @@ body{
 .main_content {
   width: 100%;
   background:#2E445E;
-  height: 350px;
+  height: 450px;
 }
-
+.text {
+  margin: 50px;
+}
+.check {
+  margin: 40px 0px 0px 0px;
+}
 

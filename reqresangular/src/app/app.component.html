@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <input type="text" [(ngModel)]="searchtext">
+  </div>
+
+<div class="row">
+<div *ngFor="let user of users|filter:searchtext">
+    <div class="col-4">
+  {{user.first_name}} {{user.last_name}}
+  <img src="{{user.avatar}}">
+    </div>
+  </div>
+</div>
+<div class="col-md-12"><div>
+  <select [(ngModel)]="perpage"  (change)="changeperpage(perpage)">
+    <option value="{{dd}}" selected="{perpage}" *ngFor="let dd of perpagearray" >{{dd}}</option>
+  </select>
+</div>
+  <div class="pagination">
+    <a style="cursor: pointer;" (click)="prevPage()" *ngIf="pageNum>1">❮</a>
+    <a>
+      <select [(ngModel)]="pageNum" name="ddl" (change)="changeDDL(pageNum)">
+        <option value="{{dd+1}}" selected="{pageNum}" *ngFor="let dd of totalPage" >{{dd+1}}</option>
+      </select>
+    </a>
+    <a style="cursor: pointer;" (click)="nextPage()" *ngIf="pageNum<12/perpage">❯</a>
+  </div>
+
+</div>
+</div>
