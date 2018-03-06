@@ -7,7 +7,7 @@
 
       <ng-template #template>
       <div class="modal-header">
-      <h4 class="modal-title pull-left">Modal</h4>
+      <h4 class="modal-title pull-left">add student from</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
       </button>
@@ -65,7 +65,7 @@
             <td>{{student.name}}</td>
             <td>{{student.email}}</td>
             <td>{{student.password}}</td>
-            <td><button class="btn-sm btn-primary" type="submit" (click)="updatestudent(student.email)">Update</button> </td>
+            <td><button class="btn-sm btn-primary" type="submit" (click)="updatestudent(student.email,template)">Update</button> </td>
             <td><button class="btn-sm btn-primary" type="submit" (click)="deletestudent(student.email)" [disabled]="edit && email==student.email">Delete</button> </td>
           </tr>
         </table>

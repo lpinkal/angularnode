@@ -77,12 +77,13 @@ export class StudentdetailsComponent implements OnChanges {
         f.resetForm();
         this.log=true;
        this.ab();
+        this.modalRef.hide();
       }
     });
 
   }
 
-  updatestudent(email){
+  updatestudent(email,template){
     console.log(email);
     this.serverservice.updatestudent(email).subscribe((res)=>{
       console.log(res);
@@ -90,6 +91,7 @@ export class StudentdetailsComponent implements OnChanges {
       this.name=res.name;
       this.email=res.email;
       this.password=res.password;
+      this.modalRef = this.modalService.show(template);
     })
   }
 
@@ -100,6 +102,7 @@ export class StudentdetailsComponent implements OnChanges {
       f.resetForm();
       this.edit=false;
       this.ab();
+      this.modalRef.hide();
     })
   }
 
