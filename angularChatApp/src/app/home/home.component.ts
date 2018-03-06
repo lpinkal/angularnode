@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   curruntreceiverdetail:Object;
   msgs=["m1","m2","m3","m1","m2","m3","m1","m2","m3","m1","m2","m3","m1","m2","m3"];
   msgs1=["mn1","mn2","mn3","mn1","mn2","mn3","mn1","mn2","mn3","mn1","mn2","mn3","mn1","mn2","mn3"];
+  edittext='';
 
   constructor() { }
 
@@ -35,8 +36,9 @@ export class HomeComponent implements OnInit {
     console.log(this.curruntreceiverdetail);
   }
 
-  addmsg(text){
-    this.msgs1.push(text);
+  addmsg(){
+    this.msgs1.push(this.edittext);
+    this.edittext='';
   }
 
 }

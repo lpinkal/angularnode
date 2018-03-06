@@ -55,7 +55,7 @@
         </div>
         <div class="row inputtext">
           <input type="text" [(ngModel)]="edittext" style="width: 92%">
-          <input type="button" class="btn-primary" value="send" style="width: 8%" (click)="addmsg(edittext)">
+          <input type="button" class="btn-primary" value="send" style="width: 8%" (click)="addmsg()">
         </div>
       </div>
       <div class="row connectedimg" *ngIf="!curruntreceiverdetail">

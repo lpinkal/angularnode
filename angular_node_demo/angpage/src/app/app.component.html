@@ -25,24 +25,39 @@
     <div class="col-8">
       <br>
       <br>
+      <br> <br>
+      <br>
       <br>
       <router-outlet></router-outlet>
     </div>
-  <button type="button" (click)="animate()">animate</button>
-  <button type="button" (click)="shrink()">shrink</button>
-  <div
-    style="height: 100px; width: 100px;"
-    [@divstate]="state">
+  <!--<button type="button" (click)="animate()">animate</button>-->
+  <!--<button type="button" (click)="shrink()">shrink</button>-->
+  <!--<div-->
+    <!--style="height: 100px; width: 100px;"-->
+    <!--[@divstate]="state">-->
 
-  </div><br>
-  <div
-    style="height: 100px; width: 100px;"
-    [@div2state]="wildcard">
+  <!--</div><br>-->
+  <!--<div-->
+    <!--style="height: 100px; width: 100px;"-->
+    <!--[@div2state]="wildcard">-->
 
-  </div>
-
-
-  <!--<div class="fixed-bottom">-->
-    <!--<p>header </p>-->
   <!--</div>-->
+
+  <!--<button type="button" (click)="openmodel()">open</button>-->
+
+
+
+  <!--<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>-->
+
+  <!--<ng-template #template>-->
+    <!--<div class="modal-header">-->
+      <!--<h4 class="modal-title pull-left">Modal</h4>-->
+      <!--<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">-->
+        <!--<span aria-hidden="true">&times;</span>-->
+      <!--</button>-->
+    <!--</div>-->
+    <!--<div class="modal-body">-->
+      <!--This is a modal.-->
+    <!--</div>-->
+  <!--</ng-template>-->
 </div>

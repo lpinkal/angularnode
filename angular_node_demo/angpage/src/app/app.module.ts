@@ -19,6 +19,9 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
 import {AuthGuard} from "./auth-gaurd.service";
 import {AuthInterceptor} from "./auth.interceptor";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BootstrapModalModule, DialogService} from "ng2-bootstrap-modal";
+import { ModaldemoComponent } from './modaldemo/modaldemo.component';
+import {ModalModule} from "ngx-bootstrap";
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HomeComponent,
     StudentdetailsComponent,
     DisplaystudentComponent,
-    ErrorpageComponent
+    ErrorpageComponent,
+    ModaldemoComponent
   ],
   imports: [
     BrowserModule,
@@ -38,17 +42,24 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BootstrapModalModule,
+    BootstrapModalModule.forRoot({container:document.body}),
+    ModalModule.forRoot()
   ],
   providers: [
     AuthService,
     AuthGuard,
+    DialogService,
     ServerService,
     {
       provide: Http,
       useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions]
     }
+  ],
+  entryComponents:[
+    ModaldemoComponent
   ],
   bootstrap: [AppComponent]
 })

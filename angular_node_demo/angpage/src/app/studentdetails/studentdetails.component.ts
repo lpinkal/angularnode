@@ -1,7 +1,8 @@
-import {Component, DoCheck, ElementRef, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, DoCheck, ElementRef, OnChanges, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ServerService} from "../server.service";
 import {Router} from "@angular/router";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 // import {DataTable,DataTableResource} from "angular-4-data-table";
 
 @Component({
@@ -28,8 +29,8 @@ export class StudentdetailsComponent implements OnChanges {
     ]
   };
 
-
-  constructor(private serverservice:ServerService,private router:Router,private er:ElementRef) {
+  modalRef: BsModalRef;
+  constructor(private serverservice:ServerService,private router:Router,private er:ElementRef,private modalService: BsModalService) {
    this.ab();
   }
 
@@ -78,6 +79,7 @@ export class StudentdetailsComponent implements OnChanges {
        this.ab();
       }
     });
+
   }
 
   updatestudent(email){
@@ -112,5 +114,9 @@ export class StudentdetailsComponent implements OnChanges {
       this.ab();
     });
     }
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }

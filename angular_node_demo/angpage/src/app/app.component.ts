@@ -1,6 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, TemplateRef} from '@angular/core';
 import {AuthService} from "./auth.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {DialogService} from "ng2-bootstrap-modal";
+import {ModaldemoComponent} from "./modaldemo/modaldemo.component";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -48,7 +51,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class AppComponent {
   state='highlighted';
   wildcard='normal';
-  constructor(private auth:AuthService){}
+  modalRef: BsModalRef;
+  constructor(private auth:AuthService,private dialogService:DialogService,private modalService: BsModalService){}
 
   animate(){
     console.log('animate');
@@ -60,5 +64,31 @@ export class AppComponent {
   shrink(){
     this.state=='normal'?this.state='highlighted':this.state='normal';
     this.wildcard=='shrink'?this.wildcard='normal':this.wildcard='shrink';
+  }
+
+  openmodel(){
+    let disposable = this.dialogService.addDialog(ModaldemoComponent, {
+      title:'Confirm title',
+      message:'Confirm message'})
+      .subscribe((isConfirmed)=>{
+        //We get dialog result
+        if(isConfirmed) {
+          alert('accepted');
+        }
+        else {
+          alert('declined');
+        }
+      });
+    //We can close dialog calling disposable.unsubscribe();
+    //If dialog was not closed manually close it by timeout
+    setTimeout(()=>{
+      disposable.unsubscribe();
+    },10000);
+  }
+
+
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }
